@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SchedulerCoreRazorEntityApp.DAL;
+
 namespace SchedulerCoreRazorApp
 {
     public class Program
@@ -9,7 +12,9 @@ namespace SchedulerCoreRazorApp
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
