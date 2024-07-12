@@ -14,4 +14,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Interface\" />
+    <Folder Include="Repositories\Implements\" />
+  </ItemGroup>
+
 </Project>
