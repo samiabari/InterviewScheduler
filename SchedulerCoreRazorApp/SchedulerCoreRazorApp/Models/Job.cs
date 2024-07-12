@@ -12,6 +12,7 @@
         public int Position_type_id { get; set; }
         public int Workstation_type_id { get; set; }
         public int Job_type_id { get; set; }
+        public int Status_id { get; set; }
         public string Jd { get; set; }
         public int Applied_on_site_id { get; set; }
         public string Job_post_link { get; set; }
@@ -29,7 +30,8 @@
         public string Email_tag { get; set; }
         public string Description { get; set; }
 
-        public Job(int jobid_, string job_uid_, string company_name_, int job_country_id_, int designation_id_, int core_tech_id_, int experience_require_year_, int position_type_id_, int workstation_type_id_, int job_type_id_, string jd_, int applied_on_site_id_, string job_post_link_, decimal company_salary_structure_, decimal salary_expected_, int company_interview_steps_, int current_interview_stage_, int interview_type_id_, DateTime interview_date_, TimeSpan interview_time_, int recruitment_type_id_, string recruiter_name_, string recruiter_number_, string recruiter_email_, string email_tag_, string description_)
+
+        public Job(int jobid_, string job_uid_, string company_name_, int job_country_id_, int designation_id_, int core_tech_id_, int experience_require_year_, int position_type_id_, int workstation_type_id_, int job_type_id_, string jd_, int applied_on_site_id_, string job_post_link_, decimal company_salary_structure_, decimal salary_expected_, int company_interview_steps_, int current_interview_stage_, int interview_type_id_, DateTime interview_date_, TimeSpan interview_time_, int recruitment_type_id_, string recruiter_name_, string recruiter_number_, string recruiter_email_, string email_tag_, string description_, int status_id_)
         {
             this.JobId = jobid_;
             this.Job_uid = job_uid_;
@@ -57,6 +59,7 @@
             this.Recruiter_email = recruiter_email_;
             this.Email_tag = email_tag_;
             this.Description = description_;
+            this.Status_id = status_id_;
         }
 
 
