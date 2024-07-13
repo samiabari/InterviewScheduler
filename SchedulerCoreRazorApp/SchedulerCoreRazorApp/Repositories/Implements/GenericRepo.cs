@@ -12,7 +12,7 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
         public GenericRepo(AppDbContext _appDbContext)
         {
             this.appDbContext = _appDbContext;
-            dbSet = this.appDbContext.Set<T>();
+            this.dbSet = this.appDbContext.Set<T>();
         }
 
         public T Add(T t)
