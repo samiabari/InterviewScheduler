@@ -4,6 +4,6 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Interface
 {
     public interface IJobRepo : IGenericRepo<Job>
     {
-        IEnumerable<Job> GetAllPendingJobs(int status_id);
+       Task<IEnumerable<Job>> GetAllPendingJobs(int status_id);
     }
 }

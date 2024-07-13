@@ -9,7 +9,5 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Interface
         Task<bool> Delete(int id);
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
-
-        Task<bool> Save();
     }
 }

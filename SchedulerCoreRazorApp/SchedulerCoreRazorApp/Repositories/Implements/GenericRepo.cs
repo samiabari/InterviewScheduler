@@ -7,7 +7,7 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
 {
     public class GenericRepo<T> : IGenericRepo<T> where T : class
     {
-        private readonly AppDbContext appDbContext;
+        protected readonly AppDbContext appDbContext;
         private DbSet<T> dbSet {  get; set; }
         public GenericRepo(AppDbContext _appDbContext)
         {
@@ -52,18 +52,6 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
         {
             var obj = await dbSet.FindAsync(id);
             return obj;
-        }
-
-        public async Task<bool> Save()
-        {
-            try
-            {
-                await appDbContext.SaveChangesAsync();
-                return true;
-            }
-            catch {
-                return false;
-            }
         }
 
         public async Task<T> Update(int id, T t)

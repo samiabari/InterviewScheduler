@@ -20,6 +20,8 @@ namespace SchedulerCoreRazorApp
             });
 
             builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+            builder.Services.AddScoped<IUnitOfWorkRepo, UnitOfWorkRepo>();
+            builder.Services.AddScoped<IJobRepo, JobRepo>();
 
             var app = builder.Build();
 
