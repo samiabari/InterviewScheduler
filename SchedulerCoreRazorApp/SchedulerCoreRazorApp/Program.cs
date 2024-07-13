@@ -12,9 +12,10 @@ namespace SchedulerCoreRazorApp
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(
-                builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<AppDbContext>(options => {
+
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
+            });
 
             var app = builder.Build();
 

@@ -5,11 +5,9 @@ namespace SchedulerCoreRazorEntityApp.DAL
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options): base(options)
+        protected AppDbContext(DbContextOptions<AppDbContext> options) : base(options) 
         {
-
         }
-
         public DbSet<Job> Jobs { set; get; }
         public DbSet<Appsite> Appsites { set; get; }
         public DbSet<Coretech> Coretechs { set; get; }
