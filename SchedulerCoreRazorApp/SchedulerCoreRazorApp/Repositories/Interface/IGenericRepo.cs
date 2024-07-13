@@ -4,12 +4,12 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Interface
 {
     public interface IGenericRepo<T> where T : class
     {
-        T Add(T t);
-        T Update(int id, T t);
-        bool Delete(int id);
-        T GetById(int id);
-        IEnumerable<T> GetAll();
+        Task<T> Add(T t);
+        Task<T> Update(int id, T t);
+        Task<bool> Delete(int id);
+        Task<T> GetById(int id);
+        Task<IEnumerable<T>> GetAll();
 
-        bool Save();
+        Task<bool> Save();
     }
 }

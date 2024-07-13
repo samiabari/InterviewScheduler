@@ -2,13 +2,8 @@
 
 namespace SchedulerCoreRazorEntityApp.Repositories.Interface
 {
-    public interface IJobRepo
+    public interface IJobRepo : IGenericRepo<Job>
     {
-        Job AddJob(Job job);
-        Job UpdateJob(int id,Job job);
-        bool DeleteJob(int id);
-        Job GetJobById(int id);
-        List<Job> GetAllJob();
-        
+        IEnumerable<Job> GetAllPendingJobs(int status_id);
     }
 }

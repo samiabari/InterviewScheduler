@@ -8,22 +8,22 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
     public class GenericRepo<T> : IGenericRepo<T> where T : class
     {
         private readonly AppDbContext appDbContext;
-        private readonly DbSet<T> dbSet=null;
+        private DbSet<T> dbSet {  get; set; }
         public GenericRepo(AppDbContext _appDbContext)
         {
             this.appDbContext = _appDbContext;
             this.dbSet = this.appDbContext.Set<T>();
         }
 
-        public T Add(T t)
+        public async Task<T> Add(T t)
         {
-            var obj=dbSet.Add(t);
+            var obj= await dbSet.AddAsync(t);
             return obj.Entity;
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            var obj = dbSet.Find(id);
+            var obj = await dbSet.FindAsync(id);
 
             if (obj == null)
             {
@@ -41,24 +41,24 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
             }
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            var objs = dbSet.ToList();
+            var objs = await dbSet.ToListAsync();
             return objs;
 
         }
 
-        public T GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            var obj = dbSet.Find(id);
+            var obj = await dbSet.FindAsync(id);
             return obj;
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
             try
             {
-                appDbContext.SaveChanges();
+                await appDbContext.SaveChangesAsync();
                 return true;
             }
             catch {
@@ -66,9 +66,9 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
             }
         }
 
-        public T Update(int id, T t)
+        public async Task<T> Update(int id, T t)
         {
-            var obj = dbSet.Find(id);
+            var obj = await dbSet.FindAsync(id);
 
             if (obj == null)
             {
