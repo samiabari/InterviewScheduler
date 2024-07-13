@@ -18,31 +18,31 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
             return result.Entity;
         }
 
-        public Job UpdateJob(Job job)
+        public Job UpdateJob(int id, Job job)
         {
-            var jobToBeUpdated = appDbContext.Jobs.SingleOrDefault(j => j.JobId == job.JobId);
+            var result = appDbContext.Jobs.Find(id);
             
-            if (jobToBeUpdated == null)
+            if (result == null)
             {
                 throw new Exception("No Data found to be updated");
             }
-            var result = appDbContext.Jobs.Update(jobToBeUpdated);
+            var updatedJob = appDbContext.Jobs.Update(job);
             appDbContext.SaveChanges();
-            return result.Entity;
+            return updatedJob.Entity;
 
         }
         public bool DeleteJob(int id)
         {
-            var jobToBeUpdated = appDbContext.Jobs.SingleOrDefault(j => j.JobId == id);
+            var result = appDbContext.Jobs.Find(id);
 
-            if (jobToBeUpdated == null)
+            if (result == null)
             {
                 throw new Exception("No Data found to be updated");
             }
 
             try
             {
-                appDbContext.Jobs.Remove(jobToBeUpdated);
+                appDbContext.Jobs.Remove(result);
                 appDbContext.SaveChanges();
                 return true;
             }
@@ -60,7 +60,7 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
 
         public Job GetJobById(int id)
         {
-            var job = appDbContext.Jobs.SingleOrDefault(j => j.JobId == id);
+            var job = appDbContext.Jobs.Find(id);
             return job;
         }
 

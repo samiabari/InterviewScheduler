@@ -20,6 +20,7 @@ namespace SchedulerCoreRazorApp
             });
 
             builder.Services.AddScoped<IJobRepo, JobRepo>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
