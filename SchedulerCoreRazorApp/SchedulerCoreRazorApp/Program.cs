@@ -19,7 +19,7 @@ namespace SchedulerCoreRazorApp
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
             });
 
-            builder.Services.AddScoped<IJobRepo, JobRepo>();
+            builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 
             var app = builder.Build();
 
