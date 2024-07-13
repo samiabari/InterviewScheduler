@@ -8,7 +8,7 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Interface
         Job UpdateJob(Job job);
         bool DeleteJob(int id);
         Job GetJobById(int id);
-        Job GetAllJob();
+        List<Job> GetAllJob();
         
     }
 }

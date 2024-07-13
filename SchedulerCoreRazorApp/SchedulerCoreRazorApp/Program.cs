@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchedulerCoreRazorEntityApp.DAL;
+using SchedulerCoreRazorEntityApp.Repositories.Implements;
+using SchedulerCoreRazorEntityApp.Repositories.Interface;
 
 namespace SchedulerCoreRazorApp
 {
@@ -17,6 +19,7 @@ namespace SchedulerCoreRazorApp
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
             });
 
+            builder.Services.AddScoped<IJobRepo, JobRepo>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
