@@ -1,9 +1,11 @@
-﻿namespace SchedulerCoreRazorEntityApp.Repositories.Interface
+﻿using SchedulerCoreRazorEntityApp.Models;
+
+namespace SchedulerCoreRazorEntityApp.Repositories.Interface
 {
     public interface IUnitOfWorkRepo: IDisposable
     {
-        IJobRepo JobRepo { get; }
-
+        IJobRepo Jobs { get; }
+        IGenericRepo<Status> Statuses { get; }
         Task<bool> Save();
 
     }

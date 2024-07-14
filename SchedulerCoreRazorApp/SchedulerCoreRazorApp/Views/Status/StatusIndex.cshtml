@@ -1,0 +1,33 @@
+﻿@using SchedulerCoreRazorEntityApp.Models;
+
+@model IEnumerable<Status>
+<h1>Jobs</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Designation</th>
+            <th>Company</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var status in Model)
+            {
+                <tr>
+                    <td>@status.Status_id</td>
+                    <td>@status.Status_name</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@status.Status_id"></a>
+                        <a asp-action="Edit" asp-route-id="@status.Status_id"></a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

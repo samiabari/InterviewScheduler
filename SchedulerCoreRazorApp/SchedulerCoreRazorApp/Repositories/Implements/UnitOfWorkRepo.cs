@@ -1,4 +1,5 @@
 ﻿using SchedulerCoreRazorEntityApp.DAL;
+using SchedulerCoreRazorEntityApp.Models;
 using SchedulerCoreRazorEntityApp.Repositories.Interface;
 
 namespace SchedulerCoreRazorEntityApp.Repositories.Implements
@@ -6,12 +7,14 @@ namespace SchedulerCoreRazorEntityApp.Repositories.Implements
     public class UnitOfWorkRepo : IUnitOfWorkRepo
     {
         private readonly AppDbContext appDbContext;
-        public IJobRepo JobRepo { get; private set; }
+        public IJobRepo Jobs { get; private set; }
 
+        public IGenericRepo<Status>  Statuses { get; private set; }
         public UnitOfWorkRepo(AppDbContext _appDbContext)
         {
             this.appDbContext = _appDbContext;
-            this.JobRepo = new JobRepo(appDbContext);
+            this.Jobs = new JobRepo(appDbContext);
+            this.Statuses = new GenericRepo<Status>(appDbContext);
         }
 
         public async Task<bool> Save()
