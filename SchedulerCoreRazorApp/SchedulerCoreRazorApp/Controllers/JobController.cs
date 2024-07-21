@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SchedulerCoreRazorEntityApp.Models;
 using SchedulerCoreRazorEntityApp.Repositories.Interface;
 
 namespace SchedulerCoreRazorEntityApp.Controllers
@@ -16,6 +17,13 @@ namespace SchedulerCoreRazorEntityApp.Controllers
         {
             var jobs = await unitOfWork.Jobs.GetAllPendingJobs(2);
             return View(jobs);
+        }
+
+
+        public async Task<IActionResult> AddJob(Job job)
+        {
+            var jobs = await unitOfWork.Jobs.GetAllPendingJobs(2);
+            return View();
         }
     }
 }

@@ -19,9 +19,8 @@ namespace SchedulerCoreRazorApp
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
             });
 
-          //  builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+         
             builder.Services.AddScoped<IUnitOfWorkRepo, UnitOfWorkRepo>();
-          //  builder.Services.AddScoped<IJobRepo, JobRepo>();
 
             var app = builder.Build();
 
@@ -42,7 +41,7 @@ namespace SchedulerCoreRazorApp
 
             app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Status}/{action=StatusIndex}"); // Change Home/Dashboard to your desired controller/action
+            pattern: "{controller=Job}/{action=Index}"); // Change Home/Dashboard to your desired controller/action
 
 
 
